@@ -56,6 +56,7 @@ def get_mdl_train(x,x_parents):
         #gpr.L_ = L
 
         # MDL normalization term
+        # let this term be 0 if original normalization term is INF
         mdl_norm_train = 0 # 1 / 2 * np.log(np.linalg.det(np.identity(K.shape[0]) + sigma**-2 * K))
         
     else:
@@ -83,6 +84,7 @@ def get_mdl_train(x,x_parents):
         gpr.L_ = L
 
         # MDL normalization term
+        # let this term be 0 if original normalization term is INF
         mdl_norm_train = 0 # 1 / 2 * np.log(np.linalg.det(np.identity(K.shape[0]) + sigma**-2 * K))
     #print("mdl_lik_train:"+str(mdl_lik_train)+"\nmdl_pen_train"+str(mdl_pen_train)+"\nmdl_norm_train"+str(mdl_norm_train))
     return mdl_lik_train + mdl_pen_train + mdl_norm_train
